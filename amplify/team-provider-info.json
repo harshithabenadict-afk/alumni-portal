@@ -1,0 +1,23 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-alumninetwork-dev-118a3-authRole",
+      "UnauthRoleArn": "arn:aws:iam::423147398725:role/amplify-alumninetwork-dev-118a3-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::423147398725:role/amplify-alumninetwork-dev-118a3-authRole",
+      "Region": "ap-south-1",
+      "DeploymentBucketName": "amplify-alumninetwork-dev-118a3-deployment",
+      "UnauthRoleName": "amplify-alumninetwork-dev-118a3-unauthRole",
+      "StackName": "amplify-alumninetwork-dev-118a3",
+      "StackId": "arn:aws:cloudformation:ap-south-1:423147398725:stack/amplify-alumninetwork-dev-118a3/fa3442c0-44be-11f1-9479-0a96ec0339c1",
+      "AmplifyAppId": "d3fid8risjs7p"
+    },
+    "categories": {
+      "auth": {
+        "alumninetworkaa8a38cb": {}
+      },
+      "api": {
+        "alumninetwork": {}
+      }
+    }
+  }
+}
