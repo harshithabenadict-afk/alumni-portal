@@ -1,4 +1,5 @@
 import { useState } from "react";
+import "./App.css";
 
 function App() {
   const [content, setContent] = useState("");
@@ -17,26 +18,36 @@ function App() {
   }
 
   return (
-    <div style={{ padding: 20, fontFamily: "Arial" }}>
-      <h1>Alumni Network Portal</h1>
+    <div className="app">
+      <div className="container">
+        <h1>🎓 Alumni Network Portal</h1>
 
-      <h3>Welcome User</h3>
+        <h3 className="welcome">Welcome User</h3>
 
-      <input
-        value={content}
-        onChange={(e) => setContent(e.target.value)}
-        placeholder="Write a post"
-        style={{ padding: 10, width: "300px" }}
-      />
+        <div className="input-box">
+          <input
+            value={content}
+            onChange={(e) => setContent(e.target.value)}
+            placeholder="Write a post..."
+          />
 
-      <button onClick={addPost} style={{ marginLeft: 10 }}>
-        Post
-      </button>
+          <button onClick={addPost}>Post</button>
+        </div>
 
-      <h3>Posts</h3>
-      {posts.map((p) => (
-        <p key={p.id}>{p.content}</p>
-      ))}
+        <div className="posts-section">
+          <h3>📢 Posts</h3>
+
+          {posts.length === 0 ? (
+            <p className="empty">No posts yet</p>
+          ) : (
+            posts.map((p) => (
+              <div key={p.id} className="post">
+                {p.content}
+              </div>
+            ))
+          )}
+        </div>
+      </div>
     </div>
   );
 }
