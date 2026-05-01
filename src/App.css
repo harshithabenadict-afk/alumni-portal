@@ -25,6 +25,27 @@ h1 {
   margin-bottom: 20px;
 }
 
+/* ✅ Navigation styles added */
+.nav {
+  display: flex;
+  justify-content: space-around;
+  background: white;
+  padding: 12px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  font-weight: bold;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.nav span {
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.nav span:hover {
+  color: #007bff;
+}
+
 .input-box {
   display: flex;
   gap: 10px;
