@@ -1,59 +1,26 @@
-import { useState, useEffect } from "react";
-import { Amplify } from "aws-amplify";
-import config from "./aws-exports";
-import { withAuthenticator } from "@aws-amplify/ui-react";
-import { generateClient } from "aws-amplify/api";
-import { createPost } from "./graphql/mutations";
-import { listPosts } from "./graphql/queries";
-import "@aws-amplify/ui-react/styles.css";
+import { useState } from "react";
 
-Amplify.configure(config);
-
-const client = generateClient();
-
-function App({ signOut, user }) {
+function App() {
   const [content, setContent] = useState("");
   const [posts, setPosts] = useState([]);
 
-  useEffect(() => {
-    fetchPosts();
-  }, []);
-
-  async function fetchPosts() {
-    try {
-      const result = await client.graphql({
-        query: listPosts,
-      });
-
-      setPosts(result.data.listPosts.items);
-    } catch (err) {
-      console.log("Error fetching posts:", err);
-    }
-  }
-
-  async function addPost() {
+  function addPost() {
     if (!content) return;
 
-    try {
-      await client.graphql({
-        query: createPost,
-        variables: {
-          input: { content },
-        },
-      });
+    const newPost = {
+      id: Date.now(),
+      content,
+    };
 
-      setContent("");
-      fetchPosts();
-    } catch (err) {
-      console.log("Error creating post:", err);
-    }
+    setPosts([newPost, ...posts]);
+    setContent("");
   }
 
   return (
     <div style={{ padding: 20, fontFamily: "Arial" }}>
       <h1>Alumni Network Portal</h1>
 
-      <h3>Welcome {user.username}</h3>
+      <h3>Welcome User</h3>
 
       <input
         value={content}
@@ -70,12 +37,8 @@ function App({ signOut, user }) {
       {posts.map((p) => (
         <p key={p.id}>{p.content}</p>
       ))}
-
-      <button onClick={signOut} style={{ marginTop: 20 }}>
-        Logout
-      </button>
     </div>
   );
 }
 
-export default withAuthenticator(App);
+export default App;
